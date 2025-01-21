@@ -1,0 +1,12 @@
+caspar_health_processing:
+  outputs:
+    dev:
+      dbname: main
+      host: "0.0.0.0"
+      pass: password
+      port: 5430
+      schema: public
+      threads: 4
+      type: postgres
+      user: datauser
+  target: dev

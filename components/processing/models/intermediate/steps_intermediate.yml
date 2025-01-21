@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: steps_intermediate
+    columns:
+      - name: id
+        data_type: BIGINT
+        description: "Steps submission id"
+      - name: external_id
+        data_type: INTEGER
+        description: "Patient id"
+      - name: steps
+        data_type: INTEGER
+        description: "Amount of steps, which were done. Can be converted to minutes by this formula steps * 0.002"
+      - name: submission_time
+        data_type: TIMESTAMP
+        description: "Time when the exercises was completed. Let's assume the table is 'partitioned' by this fields"
+      - name: updated_at
+        data_type: TIMESTAMP
+        description: "Time when??"

@@ -1,0 +1,63 @@
+version: 2
+
+sources:
+
+  - name: user_activity
+    description: "Initial layer of data"
+    schema: "public"
+
+    tables:
+
+      - name: steps
+        columns:
+          - name: id
+            data_type: BIGINT
+            description: "Steps submission id"
+          - name: external_id
+            data_type: INTEGER
+            description: "Patient id"
+          - name: steps
+            data_type: INTEGER
+            description: "Amount of steps, which were done. Can be converted to minutes by this formula steps * 0.002"
+          - name: submission_time
+            data_type: TIMESTAMPTZ
+            description: "Time when the exercises was completed. Let's assume the table is 'partitioned' by this fields"
+          - name: updated_at
+            data_type: TIMESTAMPTZ
+            description: "Time when??"
+
+      - name: exercises
+        columns:
+          - name: id
+            data_type: BIGINT
+            description: "Exercise id"
+          - name: external_id
+            data_type: INTEGER
+            description: "Patient id"
+          - name: minutes
+            data_type: INTEGER
+            description: "Amount of minutes"
+          - name: completed_at
+            data_type: TIMESTAMPTZ
+            description: "Time when the exercises was completed. Let's assume the table is 'partitioned' by this fields"
+          - name: updated_at
+            data_type: TIMESTAMPTZ
+            description: "Time when??"
+
+      - name: customers
+        columns:
+          - name: patient_id
+            data_type: INTEGER
+            description: "Patient Id"
+          - name: first_name
+            data_type: VARCHAR(255)
+            description: "First name"
+          - name: last_name
+            data_type: VARCHAR(255)
+            description: "Last name"
+          - name: country
+            data_type: VARCHAR(255)
+            description: "Country where a patient lives"
+          - name: processing_date
+            data_type: TIMESTAMPTZ
+            description: "Time when data reach the DWH. Let's assume the table is 'partitioned' by this fields"

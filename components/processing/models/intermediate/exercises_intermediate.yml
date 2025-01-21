@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: exercises_intermediate
+    columns:
+      - name: id
+        data_type: BIGINT
+        description: "Exercise id"
+      - name: external_id
+        data_type: INTEGER
+        description: "Patient id"
+      - name: minutes
+        data_type: INTEGER
+        description: "Amount of minutes"
+      - name: completed_at
+        data_type: TIMESTAMP
+        description: "Time when the exercises was completed. Let's assume the table is 'partitioned' by this fields"
+      - name: updated_at
+        data_type: TIMESTAMP
+        description: "Time when??"

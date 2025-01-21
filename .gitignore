@@ -1,0 +1,9 @@
+node_modules/
+dbt_modules/
+logs/
+.idea
+script/domain-schemas/
+.DS_Store
+*.log
+target/
+.venv
