@@ -1,5 +1,5 @@
 CREATE TABLE patients (
-    patient_id INTEGER PRIMARY KEY,
+    patient_id INTEGER,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     country VARCHAR(255),
@@ -7,7 +7,7 @@ CREATE TABLE patients (
 );
 
 CREATE TABLE exercises (
-    id BIGINT PRIMARY KEY,
+    id BIGINT,
     external_id INTEGER,
     minutes INTEGER,
     completed_at TIMESTAMPTZ,
@@ -15,7 +15,7 @@ CREATE TABLE exercises (
 );
 
 CREATE TABLE steps (
-    id BIGINT PRIMARY KEY,
+    id BIGINT,
     external_id INTEGER,
     steps INTEGER,
     submission_time TIMESTAMPTZ,

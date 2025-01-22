@@ -1,5 +1,5 @@
 from enum import Enum
-from components.loader.schema.schemas import *
+from schema.schemas import *
 
 class SchemaEnum(Enum):
     PATIENTS = (patients_schema, "patients.csv")
