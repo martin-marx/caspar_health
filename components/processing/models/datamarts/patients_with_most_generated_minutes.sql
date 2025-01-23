@@ -1,7 +1,7 @@
 WITH sources AS (
 
   SELECT
-	sum(steps * 0.002) AS minutes,
+	SUM(steps * 0.002) AS minutes,
     external_id AS patient_id
   FROM
     {{ ref('steps_intermediate')}}

@@ -99,15 +99,15 @@ services:
   dwh4:
     image: postgres:17-alpine
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=datauser
-      - POSTGRES_DB=main
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     ports:
-      - 5432:5432
+      - 5430:5432
     networks:
       - common_network
     volumes:
-      - ./init_dwh_scripts:/docker-entrypoint-initdb.d #volume to migrate DB
+      - ./init_dwh_scripts:/docker-entrypoint-initdb.d #volume to migrate DB tables
       - dwh-vol:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "datauser", "-d", "main"]
@@ -132,9 +132,9 @@ services:
       retries: 3
       start_period: 10s
     environment:
-      - MINIO_ROOT_USER=datauser
-      - MINIO_ROOT_PASSWORD=password
-      - MINIO_DEFAULT_BUCKETS=source
+      - MINIO_ROOT_USER=${MINIO_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKET}
     restart: always
 
   postgres:
@@ -368,18 +368,6 @@ services:
     networks:
       - default
       - common_network
-
-  docker-socket-proxy:
-    image: tecnativa/docker-socket-proxy:0.1.1
-    environment:
-      CONTAINERS: 1
-      IMAGES: 1
-      AUTH: 1
-      POST: 1
-    privileged: true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: always
 
 networks:
   default:
