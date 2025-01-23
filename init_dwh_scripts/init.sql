@@ -1,3 +1,4 @@
+--Scripts to migrate tables to the DB
 CREATE TABLE patients (
     patient_id INTEGER,
     first_name VARCHAR(255),

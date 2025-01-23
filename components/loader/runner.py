@@ -14,6 +14,7 @@ if __name__ == '__main__':
 
     spark = (SparkSession.builder
              .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
+             # Next line can be used during local runs
              #.config("spark.jars", "./jars/hadoop-aws-3.3.4.jar,./jars/aws-java-sdk-bundle-1.12.779.jar, ./jars/postgresql-42.7.0.jar")
              .config("spark.hadoop.fs.s3a.endpoint", "http://minio:9000")
              .config("spark.hadoop.fs.s3a.access.key", "datauser")
@@ -23,7 +24,6 @@ if __name__ == '__main__':
              .appName('Data importer').getOrCreate())
 
     df = spark.read.options(header='True', delimiter=',').schema(spark_schema).csv(f's3a://source/{file_path}')
-    print(df)
 
     (df
      .write.format("jdbc")
