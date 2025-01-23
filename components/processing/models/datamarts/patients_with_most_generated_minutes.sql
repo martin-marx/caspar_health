@@ -33,6 +33,6 @@ SELECT
   p.country,
   r.total_minutes
 FROM
-  patients p LEFT JOIN ranked r ON p.patient_id = r.patient_id
+  {{ source('user_activity', 'patients') }} p LEFT JOIN ranked r ON p.patient_id = r.patient_id
 WHERE
   patient_rank = 1

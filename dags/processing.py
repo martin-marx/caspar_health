@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
-from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.bash import BashOperator
 from datetime import datetime
 
 default_args = {
@@ -50,6 +50,14 @@ with DAG(
         dag=dag,
     )
 
-    end = DummyOperator(task_id='end')
+    dbt_processing = BashOperator(
+        task_id="dbt_processing",
+        bash_command="cd /opt/airflow/processing && dbt run",
+    )
 
-    [steps_import, patients_import, exercises_import] >> end
+    dbt_tests = BashOperator(
+        task_id="dbt_processing_tests",
+        bash_command="cd /opt/airflow/processing && dbt test",
+    )
+
+    [steps_import, patients_import, exercises_import] >> dbt_processing >> dbt_tests

@@ -13,9 +13,14 @@ sources:
           - name: id
             data_type: BIGINT
             description: "Steps submission id"
+            tests:
+              - unique
+              - not_null
           - name: external_id
             data_type: INTEGER
             description: "Patient id"
+            tests:
+              - not_null
           - name: steps
             data_type: INTEGER
             description: "Amount of steps, which were done. Can be converted to minutes by this formula steps * 0.002"
@@ -31,6 +36,9 @@ sources:
           - name: id
             data_type: BIGINT
             description: "Exercise id"
+            tests:
+              - unique
+              - not_null
           - name: external_id
             data_type: INTEGER
             description: "Patient id"
@@ -44,11 +52,14 @@ sources:
             data_type: TIMESTAMPTZ
             description: "Time when??"
 
-      - name: customers
+      - name: patients
         columns:
           - name: patient_id
             data_type: INTEGER
             description: "Patient Id"
+            tests:
+              - unique
+              - not_null
           - name: first_name
             data_type: VARCHAR(255)
             description: "First name"
