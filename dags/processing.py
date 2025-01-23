@@ -9,6 +9,7 @@ with DAG(
     start_date=datetime(2025, 1, 1),
     schedule_interval=None,
     catchup=False,
+    tags=["martin"],
     default_args={
         "owner": "Caspar Health DE team"
     },

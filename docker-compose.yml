@@ -50,7 +50,7 @@ x-airflow-common:
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   #image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.10.4}
-  image: docker.io/library/airflow_with_deps:0.6 #Custome image with SparkOperator and DBT dependencies
+  image: docker.io/library/airflow_with_deps:1.0 #Custome image with SparkOperator and DBT dependencies
   networks:
     - default
     - common_network
@@ -94,13 +94,13 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
-    dwh4:
+    dwh:
       condition: service_healthy
     minio:
       condition: service_healthy
 
 services:
-  dwh4:
+  dwh:
     image: postgres:17-alpine
     environment:
       - POSTGRES_USER=${DB_USER}
