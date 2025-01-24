@@ -47,8 +47,7 @@ Scripts which are used to download required by your OS dependencies and make the
 ## Instructions for starting up the solution
 ### Notes
 * I use Ubuntu. There might be issues during the startup of the solution on other operating systems. Also I didn't prepare any instructions for Windows
-* Unfortunately, I didn't find ways to do some things and got tired. In order to run everything a couple of manual actions are required. 
-* Please make sure you installed Git lfs to download Java dependencies for PySpark job. You can find commands to install dependencies [here](mac_prepare_env.sh) and [here](prepare_env.sh)
+* Unfortunately, I didn't find ways to do some things and got tired. In order to run everything a couple of manual actions are required
 * I've built the DBT pipeline pretending that it's a columnar database and kind of "real" analytical system
 
 ### Instructions
