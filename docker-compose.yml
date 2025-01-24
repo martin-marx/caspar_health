@@ -382,5 +382,4 @@ volumes:
   postgres-db-volume:
   dwh-vol:
   minio_data:
-  init_dwh_scripts:
   spark-data:
