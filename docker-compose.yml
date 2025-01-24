@@ -350,7 +350,6 @@ services:
       - spark-data:/bitnami
       - ${AIRFLOW_PROJ_DIR:-.}/components/loader:/usr/local/airflow/include
     networks:
-      - default
       - common_network
 
   spark-worker:
@@ -370,7 +369,6 @@ services:
     depends_on:
       - spark-master
     networks:
-      - default
       - common_network
 
 networks:
