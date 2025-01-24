@@ -9,7 +9,7 @@ def parse_args():
     parser.add_argument('-s', '--source', type=str, help='Source of the data', required=True)
     parser.add_argument('-sh', '--source_host', type=str, help='Source host', default="http://minio")
     parser.add_argument('-sp', '--source_port', type=int, help='Source port', default=9000)
-    parser.add_argument('-sih', '--sink_host', type=str, help='Sink host', default="dwh4")
+    parser.add_argument('-sih', '--sink_host', type=str, help='Sink host', default="dwh")
     parser.add_argument('-sip', '--sink_port', type=int, help='Sink port', default=5432)
     parser.add_argument('-sid', '--sink_db', type=str, help='Sink DB', default="main")
 
